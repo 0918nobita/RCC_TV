@@ -3,8 +3,9 @@ const express = require('express'),
 
 router.get('/', function(req, res, next) {
   res.header('Content-Type', 'application/json; charset=utf-8');
+  res.status(200);
   res.send({
-    'value': 'これはサンプルです'
+    'api-version': '1.0'
   });
 });
 
