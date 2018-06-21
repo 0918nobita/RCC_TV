@@ -1,7 +1,6 @@
 const argv = require('argv'),
       axios = require('axios'),
-      express = require('express'),
-      router = express.Router();
+      router = require('express').Router();
 
 const asyncMiddleware = fn => (req, res, next) =>
   Promise.resolve(fn(req, res, next)).catch(next);
@@ -16,8 +15,8 @@ router.get('/', asyncMiddleware(async (req, res, next) => {
   .then(href => {
     axios.get(href, auth)
     .then(result => {
-      const files = result.data.values.find(value =>
-        (new RegExp(/subtitles\/.*\.srt/)).test(value.path));
+      const files = result.data.values;
+      console.log(files);
       res.send(JSON.stringify(files));
     });
   });
