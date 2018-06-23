@@ -1,4 +1,5 @@
 node_modules
 dest
+flow-typed
 res
 routes/config.js
