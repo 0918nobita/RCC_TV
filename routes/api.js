@@ -12,10 +12,10 @@ router.get('/', asyncMiddleware(async (req, res, next) => {
   res.header('Content-Type', 'application/json; charset=utf-8');
   res.status(200);
   
-  const result = await axios.get('https://api.bitbucket.org/2.0/repositories/' + auth.username + '/ltvod/src', { auth });
-  const href = result.data.values[0].links.self.href;
-  const result2 = await axios.get(href, { auth });
-  const files = result2.data.values;
+  const repository = await axios.get('https://api.bitbucket.org/2.0/repositories/' + auth.username + '/ltvod/src', { auth });
+  const href = repository.data.values[0].links.self.href;
+  const directory = await axios.get(href, { auth });
+  const files = directory.data.values;
 
   for (let file of files) {
     console.log('[' + file.path + ']');
