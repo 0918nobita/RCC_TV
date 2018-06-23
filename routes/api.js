@@ -1,13 +1,13 @@
-const argv = require('argv'),
-      axios = require('axios'),
+const axios = require('axios'),
+      config = require('config'),
       router = require('express').Router();
 
 const asyncMiddleware = fn => (req, res, next) =>
   Promise.resolve(fn(req, res, next)).catch(next);
 
 router.get('/', asyncMiddleware(async (req, res, next) => {
-  const args = argv.run().targets,
-        auth = { auth: { username: args[0], password: args[1] } };
+  const auth = { auth: { username: config.bitbucket.username,
+                         password: config.bitbucket.password } };
   
   res.header('Content-Type', 'application/json; charset=utf-8');
   res.status(200);
