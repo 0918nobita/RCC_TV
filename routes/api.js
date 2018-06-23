@@ -1,11 +1,11 @@
-const axios = require('axios'),
-      config = require('./config'),
-      router = require('express').Router();
+// @flow
+import axios from 'axios';
+import config from './config';
+import express from 'express';
 
-const asyncMiddleware = fn => (req, res, next) =>
-  Promise.resolve(fn(req, res, next)).catch(next);
+const router = express.Router();
 
-router.get('/', asyncMiddleware(async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   const auth = { username: config.bitbucket.username,
                  password: config.bitbucket.password };
   
@@ -26,6 +26,6 @@ router.get('/', asyncMiddleware(async (req, res, next) => {
   }
 
   res.send(JSON.stringify(files));
-}));
+});
 
 module.exports = router;
