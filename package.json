@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "./node_modules/.bin/babel --watch=./ --out-dir=./dest --ignore node_modules,dest",
+    "build": "./node_modules/.bin/babel ./ --out-dir=./dest --ignore node_modules,dest",
+    "watch": "./node_modules/.bin/babel --watch=./ --out-dir=./dest --ignore node_modules,dest",
     "start": "node ./bin/www"
   },
   "dependencies": {
