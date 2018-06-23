@@ -17,13 +17,9 @@ router.get('/', async (req, res, next) => {
   const directory = await axios.get(href, { auth });
   const files = directory.data.values;
 
-  for (let file of files) {
-    console.log('[' + file.path + ']');
-    
-    await axios.get(file.links.self.href, { auth }).then(result => {
-      console.log(result.data);
-    });
-  }
+  for (let file of files)
+    await axios.get(file.links.self.href, { auth })
+      .then(result => console.log(result.data));
 
   res.send(JSON.stringify(files));
 });
