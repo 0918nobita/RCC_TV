@@ -1,26 +1,8 @@
 {
-  "name": "vod",
-  "version": "1.0.0",
+  "name": "ltvod",
+  "version": "0.0.1",
   "private": true,
-  "scripts": {
-    "flow": "./node_modules/.bin/flow",
-    "build": "npm run flow && ./node_modules/.bin/babel ./ --out-dir=./dest --ignore node_modules,dest",
-    "watch": "./node_modules/.bin/babel --watch=./ --out-dir=./dest --ignore node_modules,dest",
-    "start": "node ./bin/www"
-  },
-  "dependencies": {
-    "axios": "^0.18.0",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.9",
-    "express": "~4.16.0",
-    "http-errors": "~1.6.2",
-    "morgan": "~1.9.0"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "babel-preset-env": "^1.7.0",
-    "flow-bin": "^0.75.0",
-    "flow-typed": "^2.4.0"
-  }
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {}
 }
