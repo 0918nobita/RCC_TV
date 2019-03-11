@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {},
-  "dependencies": {},
+  "dependencies": {
+    "typescript": "^3.3.3333"
+  },
   "devDependencies": {}
 }
