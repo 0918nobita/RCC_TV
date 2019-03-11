@@ -5,6 +5,7 @@
   "scripts": {},
   "dependencies": {},
   "devDependencies": {
+    "@babel/core": "^7.3.4",
     "typescript": "^3.3.3333",
     "webpack": "^4.29.6"
   }
