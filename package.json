@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {},
-  "dependencies": {
-    "typescript": "^3.3.3333"
-  },
-  "devDependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^3.3.3333",
+    "webpack": "^4.29.6"
+  }
 }
