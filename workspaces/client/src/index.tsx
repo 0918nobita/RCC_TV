@@ -18,7 +18,7 @@ sagaMiddleware.run(exampleSaga);
 render(
   <Provider store={store}>
     <CounterContainer />
-    <PlayerComponent src={'https://video-dev.github.io/streams/x36xhzz/x36xhzz.m3u8'} />
+    <PlayerComponent src={'http://localhost:3000/video.m3u8'} />
   </Provider>,
   document.getElementById('root')
 );
