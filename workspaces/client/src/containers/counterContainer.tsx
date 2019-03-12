@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { actions, CounterAction, actionsType } from '../store/counter/actions';
-import { GlobalState } from '../store/_state';
-import { CounterState } from '../store/counter/state';
+import { actions, CounterAction, actionsType } from '@/store/counter/actions';
+import { GlobalState } from '@/store/_state';
+import { CounterState } from '@/store/counter/state';
 
 interface Props {
   state: CounterState;

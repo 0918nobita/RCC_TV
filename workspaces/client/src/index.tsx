@@ -7,7 +7,7 @@ import createSagaMiddleware from 'redux-saga';
 import { reducer } from './store/_reducer';
 import PlayerComponent from './player';
 import CounterContainer from './containers/counterContainer';
-import { exampleSaga } from './sagas/example';
+import { exampleSaga } from '@/sagas/example';
 
 const sagaMiddleware = createSagaMiddleware();
 
