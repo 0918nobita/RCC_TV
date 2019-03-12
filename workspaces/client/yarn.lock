@@ -3481,6 +3481,11 @@ opn@^5.1.0:
   dependencies:
     is-wsl "^1.1.0"
 
+option-t@^19.2.0:
+  version "19.2.0"
+  resolved "https://registry.yarnpkg.com/option-t/-/option-t-19.2.0.tgz#4e1ac8488577475140c82ddc0682bf7289c52062"
+  integrity sha512-Z/0pZ9RN6rOC/fZj/6VM6Sfi9b9Ea+IttN70Dosr/3RHTi/+/GkJdw6vWyh3ugeY79siWtTWIM7eBx/2sR5NGA==
+
 original@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/original/-/original-1.0.2.tgz#e442a61cffe1c5fd20a65f3261c26663b303f25f"
