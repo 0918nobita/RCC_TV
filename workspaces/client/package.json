@@ -10,7 +10,8 @@
     "hls.js": "^0.12.2",
     "option-t": "^19.2.0",
     "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react-dom": "^16.8.4",
+    "rxjs": "^6.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
