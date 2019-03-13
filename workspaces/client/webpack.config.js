@@ -8,6 +8,7 @@ module.exports = {
   },
   devServer: {
     contentBase: './',
+    port: 1234,
   },
   resolve: {
     alias: {
