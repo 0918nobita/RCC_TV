@@ -6,5 +6,7 @@
   "dependencies": {
     "express": "^4.16.4"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "typescript": "^3.3.3333"
+  }
 }
