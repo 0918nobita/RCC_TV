@@ -1,5 +1,12 @@
 version: "3"
 services:
+  backend:
+    image: node:11.11.0
+    ports:
+      - 8080:3000
+    volumes:
+      - "./workspaces/backend-mock/dist:/src"
+    command: node /src/index.js
   storage:
     image: nginx:1.14-alpine
     ports:
