@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {},
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.16.4"
+  },
   "devDependencies": {}
 }
