@@ -2,7 +2,10 @@
   "name": "@ltvod/backend",
   "version": "0.0.1",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./dist/index.js"
+  },
   "dependencies": {
     "express": "^4.16.4"
   },
