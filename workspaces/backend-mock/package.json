@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@types/express": "^4.16.1",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.3.3333",
+    "webpack": "^4.29.6"
   }
 }
