@@ -1,11 +1,12 @@
 BACKEND_MOCK := $(CURDIR)/workspaces/backend-mock
+CLIENT := $(CURDIR)/workspaces/client
 
 init:
 	yarn install
 
 docker-compose-up:
-	$(MAKE) build -C $(BACKEND_MOCK)
-	docker-compose up
+	$(MAKE) dev-server -C $(CLIENT) & \
+	($(MAKE) build -C $(BACKEND_MOCK); docker-compose up)
 
 clean:
 	rm -rf $(CURDIR)/node_modules
