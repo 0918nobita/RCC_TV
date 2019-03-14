@@ -7,13 +7,14 @@ import createSagaMiddleware from 'redux-saga';
 import { reducer } from './store/_reducer';
 import PlayerComponent from './player';
 import CounterContainer from './containers/counterContainer';
-import { exampleSaga } from '@/sagas/example';
+import { exampleSaga, callExampleAPI } from '@/sagas/example';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(reducer, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(exampleSaga);
+sagaMiddleware.run(callExampleAPI);
 
 render(
   <Provider store={store}>
