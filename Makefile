@@ -3,6 +3,7 @@ CLIENT := $(CURDIR)/workspaces/client
 
 init:
 	yarn install
+	docker-compose build
 
 docker-compose-up:
 	$(MAKE) dev-server -C $(CLIENT) & \
