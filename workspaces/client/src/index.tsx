@@ -7,19 +7,21 @@ import createSagaMiddleware from 'redux-saga';
 import { reducer } from './store/_reducer';
 import PlayerComponent from './player';
 import CounterContainer from './containers/counterContainer';
-import { exampleSaga, callExampleAPI } from '@/sagas/example';
+import { exampleSaga, getVideoMetadata } from '@/sagas/example';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(reducer, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(exampleSaga);
-sagaMiddleware.run(callExampleAPI);
+sagaMiddleware.run(getVideoMetadata, 'videoId');
+
+const MEDIA_STORAGE = 'http://localhost:3000';
 
 render(
   <Provider store={store}>
     <CounterContainer />
-    <PlayerComponent src={'http://localhost:3000/video.m3u8'} />
+    <PlayerComponent src={`${MEDIA_STORAGE}/video.m3u8`} />
   </Provider>,
   document.getElementById('root')
 );

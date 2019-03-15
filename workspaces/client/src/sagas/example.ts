@@ -6,7 +6,7 @@ export function* exampleSaga() {
   return 0;
 }
 
-export function* callExampleAPI() {
-  const result = yield call(async () => (await fetch('http://localhost:8080')).json());
-  console.log({ result });
+export function* getVideoMetadata(videoId: string) {
+  const { url, title, desc } = yield call(async () => (await fetch(`http://localhost:8080/video/${videoId}`)).json());
+  console.log({ url, title, desc });
 }
