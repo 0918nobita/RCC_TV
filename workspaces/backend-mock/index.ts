@@ -18,4 +18,12 @@ app.get('/', (_, res) => {
   });
 });
 
+app.get('/video/:videoId', (_, res) => {
+  return res.json({
+    url: 'video.m3u8',
+    title: 'サンプルのビデオ',
+    desc: '説明文'
+  });
+});
+
 app.listen(3000);
