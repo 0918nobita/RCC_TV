@@ -1,3 +1,4 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -7,14 +8,18 @@ module.exports = {
   },
   devServer: {
     contentBase: './',
+    port: 1234,
   },
   resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    },
     extensions: ['.ts', '.tsx', '.js'],
   },
   module: {
     rules: [
       {
-        test: /\.tsx$/,
+        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         use: {
           loader: "ts-loader",
@@ -30,5 +35,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
-  ]
+  ],
+  performance: { hints: false },
 };

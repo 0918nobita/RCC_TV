@@ -1,36 +1,41 @@
 import * as React from 'react';
 import Hls from 'hls.js';
-
-console.log(Hls.isSupported());
+import { Nullable, isNotNull } from 'option-t/lib/Nullable';
 
 type Props = {
   src: string;
 };
 
 export default class PlayerComponent extends React.Component<Props> {
-  private hls: Hls;
-  private player: HTMLVideoElement | null = null;
-
-  constructor(props: Props) {
-    super(props);
-    this.hls = new Hls();
-  }
+  private hls: Nullable<Hls> = null;
 
   componentDidMount() {
-    if (this.player === null) return;
+    this._initPlayer();
+  }
 
-    this.hls.attachMedia(this.player);
-    this.hls.on(Hls.Events.MEDIA_ATTACHED, () => {
-      console.log("video and hls.js are now bound together !");
-      this.hls.loadSource(this.props.src);
-      this.hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
-        console.log("manifest loaded, found " + data.levels.length + " quality level");
-        if (this.player !== null) this.player.play();
-      });
-    });
+  componentDidUpdate() {
+    this._initPlayer();
+  }
+
+  _initPlayer() {
+    if (isNotNull(this.hls)) this.hls.destroy();
+
+    const { src } = this.props;
+    const hls = new Hls({ enableWorker: false });
+    hls.loadSource(src);
+    const video = document.getElementById('video') as HTMLVideoElement;
+    hls.attachMedia(video);
+
+    this.hls = hls;
+  }
+
+  componentWillUnmount() {
+    if (isNotNull(this.hls)) this.hls.destroy();
   }
 
   render() {
-    return (<video ref={player => {this.player = player;}} preload="none" autoPlay={true}></video>);
+    return (
+      <video id='video' controls={true} autoPlay={true} style={{ width: '80vw' }}></video>
+    );
   }
 }
