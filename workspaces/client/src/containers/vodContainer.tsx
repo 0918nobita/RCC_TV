@@ -17,7 +17,7 @@ class VODContainer extends React.Component<Props> {
   }
 
   render() {
-    return (<div></div>);
+    return (<div><button onClick={this.props.actions.requestVideo}>request</button></div>);
   }
 }
 
