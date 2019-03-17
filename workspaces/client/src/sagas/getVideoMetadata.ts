@@ -1,9 +1,10 @@
-import { take, call } from 'redux-saga/effects';
+import { take, call, put } from 'redux-saga/effects';
 import axios from 'axios';
 
-import { VODActionTypes } from '@/store/vod/actions';
+import { VODActionTypes, success, fail } from '@/store/vod/actions';
 
 interface GetVideo {
+  id: string;
   title: string;
   desc: string;
   url: string;
@@ -24,8 +25,8 @@ export function* getVideoMetadata(videoId: string) {
   const { result, err }: { result?: GetVideo; err?: any } = yield call(getVideo, videoId);
 
   if (result && !err) {
-    console.log('成功', { result });
+    yield put(success(result));
   } else {
-    console.log('失敗', { err });
+    yield put(fail(err));
   }
 }
