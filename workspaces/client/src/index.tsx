@@ -14,8 +14,6 @@ const store = createStore(reducer, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(getVideoMetadata, 'videoId');
 
-const MEDIA_STORAGE = 'http://localhost:3000';
-
 render(
   <Provider store={store}>
     <VODContainer></VODContainer>
