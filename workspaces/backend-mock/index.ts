@@ -20,7 +20,8 @@ app.get('/', (_, res) => {
 
 app.get('/video/:videoId', (_, res) => {
   return res.json({
-    url: 'video.m3u8',
+    id: 'Th1s1sV1De0iD',
+    url: 'http://localhost:3000/video.m3u8',
     title: 'サンプルのビデオ',
     desc: '説明文'
   });
