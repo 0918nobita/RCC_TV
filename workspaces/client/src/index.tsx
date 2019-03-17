@@ -6,13 +6,13 @@ import createSagaMiddleware from 'redux-saga';
 
 import { reducer } from './store/_reducer';
 import VODContainer from './containers/vodContainer';
-import { getVideoMetadata } from '@/sagas/getVideoMetadata';
+import rootSaga from '@/sagas/root';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(reducer, applyMiddleware(sagaMiddleware));
 
-sagaMiddleware.run(getVideoMetadata, 'videoId');
+sagaMiddleware.run(rootSaga);
 
 render(
   <Provider store={store}>
