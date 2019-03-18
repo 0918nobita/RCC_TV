@@ -30,4 +30,13 @@ app.get('/video/:videoId', (_, res) => {
   });
 });
 
+app.get('/live', (_, res) => {
+  res.writeHead(200, {
+    'Content-Type': 'text/event-stream',
+    'Cache-Control': 'no-cache',
+    Connection: 'keep-alive',
+  });
+  res.write('\n');
+});
+
 app.listen(3000);
