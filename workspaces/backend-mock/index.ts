@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Response } from 'express';
 import bodyParser from 'body-parser';
 
 const app = express();
@@ -30,6 +30,11 @@ app.get('/video/:videoId', (_, res) => {
   });
 });
 
+const send = (res: Response, count: number) => {
+  res.write('id: ThisIsEventId\n');
+  res.write(`data: ${count}\n\n`);
+};
+
 app.get('/live', (_, res) => {
   res.writeHead(200, {
     'Content-Type': 'text/event-stream',
@@ -37,6 +42,11 @@ app.get('/live', (_, res) => {
     Connection: 'keep-alive',
   });
   res.write('\n');
+  let count = 0;
+  setInterval(() => {
+    count++;
+    send(res, count);
+  }, 1000);
 });
 
 app.listen(3000);
