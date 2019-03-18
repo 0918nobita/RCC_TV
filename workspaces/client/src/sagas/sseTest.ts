@@ -7,7 +7,7 @@ import { LiveActionTypes, onMessage, fail } from '@/store/live/actions';
 const sseChannel = eventChannel<string>(emit => {
   const receive$ = new Observable<string>(observer => {
     const evtSource = new EventSource('http://localhost:8080/live');
-    evtSource.onmessage = x => observer.next(JSON.parse(x.data).count);
+    evtSource.onmessage = x => observer.next(x.data);
     return () => evtSource.close();
   });
   return receive$.subscribe(x => emit(x)).unsubscribe;
