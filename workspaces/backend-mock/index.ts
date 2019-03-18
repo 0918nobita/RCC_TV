@@ -35,18 +35,23 @@ const send = (res: Response, count: number) => {
   res.write(`data: ${count}\n\n`);
 };
 
-app.get('/live', (_, res) => {
+app.get('/live', (req, res) => {
   res.writeHead(200, {
     'Content-Type': 'text/event-stream',
     'Cache-Control': 'no-cache',
     Connection: 'keep-alive',
   });
   res.write('\n');
+
   let count = 0;
-  setInterval(() => {
+  const intervalId = setInterval(() => {
     count++;
     send(res, count);
   }, 1000);
+
+  req.on('close', () => {
+    clearInterval(intervalId);
+  });
 });
 
 app.listen(3000);
