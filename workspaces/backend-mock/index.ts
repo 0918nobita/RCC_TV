@@ -49,9 +49,7 @@ app.get('/live', (req, res) => {
     send(res, count);
   }, 1000);
 
-  req.on('close', () => {
-    clearInterval(intervalId);
-  });
+  req.on('close', () => clearInterval(intervalId));
 });
 
 app.listen(3000);
