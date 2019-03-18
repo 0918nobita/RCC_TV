@@ -11,13 +11,16 @@ import rootSaga from '@/sagas/root';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(reducer, applyMiddleware(sagaMiddleware, createLogger()));
+const store = createStore(
+  reducer,
+  applyMiddleware(sagaMiddleware, createLogger())
+);
 
 sagaMiddleware.run(rootSaga);
 
 render(
   <Provider store={store}>
-    <VODContainer></VODContainer>
+    <VODContainer />
   </Provider>,
   document.getElementById('root')
 );

@@ -20,17 +20,21 @@ class VODContainer extends React.Component<Props> {
   render() {
     return (
       <div>
-        <button onClick={this.props.actions.requestVideo}>サンプル動画を取得・再生</button>
-        { this.props.state.video &&
+        <button onClick={this.props.actions.requestVideo}>
+          サンプル動画を取得・再生
+        </button>
+        {this.props.state.video && (
           <div>
             <p>
-              videoId: {this.props.state.video.id}<br />
-              title: {this.props.state.video.title}<br />
+              videoId: {this.props.state.video.id}
+              <br />
+              title: {this.props.state.video.title}
+              <br />
               desc: {this.props.state.video.desc}
             </p>
-            <PlayerComponent src={this.props.state.video.url}></PlayerComponent>
+            <PlayerComponent src={this.props.state.video.url} />
           </div>
-        }
+        )}
       </div>
     );
   }
@@ -38,5 +42,7 @@ class VODContainer extends React.Component<Props> {
 
 export default connect(
   (state: GlobalState) => ({ state: state.vod }),
-  (dispatch: Dispatch<VODAction>) => ({ actions: bindActionCreators(actions, dispatch) })
+  (dispatch: Dispatch<VODAction>) => ({
+    actions: bindActionCreators(actions, dispatch),
+  })
 )(VODContainer);

@@ -35,7 +35,12 @@ export default class PlayerComponent extends React.Component<Props> {
 
   render() {
     return (
-      <video id='video' controls={true} autoPlay={true} style={{ width: '80vw' }}></video>
+      <video
+        id="video"
+        controls={true}
+        autoPlay={true}
+        style={{ width: '80vw' }}
+      />
     );
   }
 }
