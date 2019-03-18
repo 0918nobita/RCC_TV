@@ -1,0 +1,28 @@
+{
+  "folders": [
+    {
+      "name": "ltvod",
+      "path": "."
+    }
+  ],
+  "extensions": {
+    "recommendations": [
+      // Necessary for coding
+      "esbenp.prettier-vscode", // prettier
+      "eg2.tslint", // TSLint
+      // As you want
+      "eamodio.gitlens", // GitLens
+      "GitHub.vscode-pull-request-github" // GitHub pull-request integration
+    ]
+  },
+  "settings": {
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "tslint.packageManager": "yarn",
+    "tslint.alwaysShowStatus": true,
+    "tslint.autoFixOnSave": true,
+    "tslint.ignoreDefinitionFiles": false,
+    "npm.autoDetect": "off",
+    "typescript.tsc.autoDetect": "off",
+    "typescript.surveys.enabled": false
+  }
+}
