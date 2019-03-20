@@ -1,5 +1,14 @@
 import express, { Response } from 'express';
 import bodyParser from 'body-parser';
+import MySQL from 'mysql';
+
+const connection = MySQL.createConnection({
+  host: '127.0.0.1',
+  port: 3306,
+  user: 'user',
+  password: 'password',
+  database: 'rcctv',
+});
 
 const app = express();
 
@@ -51,5 +60,26 @@ app.get('/live', (req, res) => {
 
   req.on('close', () => clearInterval(intervalId));
 });
+
+app.get('/rdstest', (_, res) => {
+  connection.connect(err => {
+    if (err) {
+      handleError(res, err, 'データベースへの接続に失敗しました');
+      return;
+    }
+  });
+  connection.query('SELECT * from users', (err, rows) => {
+    if (err) {
+      handleError(res, err, 'ユーザー情報の取得に失敗しました');
+      return;
+    }
+    res.json({ rows });
+  });
+});
+
+function handleError(res: Response, err: any, message: string) {
+  console.log(err);
+  res.send(err);
+}
 
 app.listen(3000);
