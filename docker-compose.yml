@@ -6,6 +6,8 @@ services:
       - 8080:3000
     volumes:
       - "./workspaces/backend-mock/dist:/src"
+    links:
+      - db
     command: node /src/index.js
   db:
     build: "./workspaces/rds"
