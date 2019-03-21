@@ -125,6 +125,23 @@ app.get('/rdstest', async (_, res) => {
       'SELECT * from videos'
     );
 
+    console.log(
+      JSON.stringify(
+        await query(
+          connection,
+          'SELECT ' +
+            'v.id AS id, v.title, ' +
+            'v.description AS video_description, v.url, ' +
+            'GROUP_CONCAT(u.name) AS presenters, ' +
+            'u.description AS user_description, ' +
+            'u.name FROM videos v ' +
+            'JOIN presentations p ON p.video_id = v.id ' +
+            'JOIN users u ON p.user_id = u.id ' +
+            'GROUP BY id'
+        )
+      )
+    );
+
     const videoEntities = [];
 
     for (const video of videos) {
