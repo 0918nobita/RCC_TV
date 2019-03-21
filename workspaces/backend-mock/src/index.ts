@@ -62,7 +62,40 @@ interface UsersRecord {
   icon: string;
 }
 
-app.get('/rdstest', (_, res) => {
+interface VideosRecord {
+  id: number;
+  title: string;
+  description: string;
+  url: string;
+  thumbnail: string;
+}
+
+const connect = (connection: MySQL.Connection) =>
+  new Promise((resolve: () => void, reject) => {
+    connection.connect(err => {
+      if (err) {
+        reject(err);
+        connection.end();
+        return;
+      }
+      resolve();
+    });
+  });
+
+function query<T>(connection: MySQL.Connection, queryString: string) {
+  return new Promise((resolve: (rows: T[]) => void, reject) => {
+    connection.query(queryString, (err, rows) => {
+      if (err) {
+        reject(err);
+        connection.end();
+        return;
+      }
+      resolve(rows);
+    });
+  });
+}
+
+app.get('/rdstest', async (_, res) => {
   const connection = MySQL.createConnection({
     host: 'db',
     user: 'user',
@@ -70,28 +103,16 @@ app.get('/rdstest', (_, res) => {
     database: 'rcctv',
   });
 
-  connection.connect(err => {
-    if (err) {
-      handleError(res, err, 'データベースへの接続に失敗しました');
-      connection.end();
-      return;
-    }
-  });
-  connection.query('SELECT * from users', (err, rows: UsersRecord[]) => {
-    if (err) {
-      handleError(res, err, 'ユーザー情報の取得に失敗しました');
-      connection.end();
-      return;
-    }
-    res.json(rows);
-    res.end();
-  });
-  connection.end();
-});
+  await connect(connection);
 
-function handleError(res: Response, err: any, message: string) {
-  res.json({ err, message });
+  const users = await query<UsersRecord>(connection, 'SELECT * from users');
+
+  const videos = await query<VideosRecord>(connection, 'SELECT * from videos');
+
+  res.json({ users, videos });
+
+  connection.end();
   res.end();
-}
+});
 
 app.listen(3000);
