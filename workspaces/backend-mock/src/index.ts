@@ -75,7 +75,6 @@ const connect = (connection: MySQL.Connection) =>
     connection.connect(err => {
       if (err) {
         reject(err);
-        connection.end();
         return;
       }
       resolve();
@@ -87,7 +86,6 @@ function query<T>(connection: MySQL.Connection, queryString: string) {
     connection.query(queryString, (err, rows) => {
       if (err) {
         reject(err);
-        connection.end();
         return;
       }
       resolve(rows);
@@ -103,16 +101,23 @@ app.get('/rdstest', async (_, res) => {
     database: 'rcctv',
   });
 
-  await connect(connection);
+  try {
+    await connect(connection);
 
-  const users = await query<UsersRecord>(connection, 'SELECT * from users');
+    const users = await query<UsersRecord>(connection, 'SELECT * from users');
 
-  const videos = await query<VideosRecord>(connection, 'SELECT * from videos');
+    const videos = await query<VideosRecord>(
+      connection,
+      'SELECT * from videos'
+    );
 
-  res.json({ users, videos });
-
-  connection.end();
-  res.end();
+    res.json({ users, videos });
+  } catch {
+    res.writeHead(500);
+    res.end();
+  } finally {
+    connection.end();
+  }
 });
 
 app.listen(3000);
