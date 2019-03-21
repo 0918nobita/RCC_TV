@@ -1,7 +1,7 @@
 CREATE TABLE rcctv.users (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  name varchar(50) NOT NULL UNIQUE,
-  screen_name varchar(15) NOT NULL UNIQUE,
+  name varchar(15) NOT NULL UNIQUE,
+  screen_name varchar(50) NOT NULL UNIQUE,
   description varchar(160),
   email varchar(256) NOT NULL UNIQUE,
   icon TEXT
