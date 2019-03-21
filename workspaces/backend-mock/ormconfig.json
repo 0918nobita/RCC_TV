@@ -1,0 +1,9 @@
+{
+  "type": "mysql",
+  "host": "db",
+  "port": 3306,
+  "username": "user",
+  "password": "password",
+  "entites": ["src/entity/*.js"],
+  "logging": true
+}
