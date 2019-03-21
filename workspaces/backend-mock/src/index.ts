@@ -102,6 +102,11 @@ function query<T>(connection: MySQL.Connection, queryString: string) {
   });
 }
 
+const recordToEntity = (
+  record: VideosRecord,
+  presenters: UsersRecord[]
+): VideoEntity => Object.assign({}, record, { presenters });
+
 app.get('/rdstest', async (_, res) => {
   const connection = MySQL.createConnection({
     host: 'db',
@@ -113,14 +118,32 @@ app.get('/rdstest', async (_, res) => {
   try {
     await connect(connection);
 
-    const users = await query<UsersRecord>(connection, 'SELECT * from users');
+    const users = await query<UsersRecord>(connection, 'SELECT * FROM users');
 
     const videos = await query<VideosRecord>(
       connection,
       'SELECT * from videos'
     );
 
-    res.json({ users, videos });
+    const videoEntities = [];
+
+    for (const video of videos) {
+      const presentations = await query<PresentationsRecord>(
+        connection,
+        `SELECT * FROM presentations WHERE video_id=${video.id}`
+      );
+
+      const presenters = [];
+      for (const presentation of presentations) {
+        const user = users.find(user => user.id === presentation.user_id);
+        if (user === undefined) continue;
+        presenters.push(user);
+      }
+
+      videoEntities.push(recordToEntity(video, presenters));
+    }
+
+    res.json({ users, videoEntities });
   } catch {
     res.writeHead(500);
     res.end();
