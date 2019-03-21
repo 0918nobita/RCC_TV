@@ -74,6 +74,11 @@ interface VideoEntity extends VideosRecord {
   presenters: UsersRecord[];
 }
 
+interface PresentationsRecord {
+  user_id: number;
+  video_id: number;
+}
+
 const connect = (connection: MySQL.Connection) =>
   new Promise((resolve: () => void, reject) => {
     connection.connect(err => {
