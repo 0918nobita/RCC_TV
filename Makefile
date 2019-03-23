@@ -20,3 +20,6 @@ clean:
 lint:
 	$(MAKE) lint -C $(BACKEND_MOCK)
 	$(MAKE) lint -C $(CLIENT)
+
+test:
+	$(MAKE) test -C $(BACKEND_MOCK)
