@@ -1,17 +1,5 @@
 version: 2.1
 
-jobs:
-  lint:
-    executor: build_executor
-    steps:
-      - checkout
-      - *cmd_attach_workspace
-      - cmd_pwd
-      - cmd_ls
-      - *cmd_install_yarn_pkg
-      - *cmd_install_npm_dependencies
-      - run: make lint
-
 workspace_root: &workspace_root
   /tmp/workspace
 
@@ -36,7 +24,7 @@ cmd_install_yarn_pkg: &cmd_install_yarn_pkg
       # Displaying yarnpkg's cache dir
       yarn cache dir
 
-cmd_install_npm_dependencies:
+cmd_install_npm_dependencies: &cmd_install_npm_dependencies
   run:
     command: |
       if [ -z "$YARN_CACHE_FOLDER" ]; then
@@ -44,6 +32,18 @@ cmd_install_npm_dependencies:
         exit 1
       fi
       yarn install
+
+jobs:
+  lint:
+    executor: build_executor
+    steps:
+      - checkout
+      - *cmd_attach_workspace
+      - cmd_pwd
+      - cmd_ls
+      - *cmd_install_yarn_pkg
+      - *cmd_install_npm_dependencies
+      - run: make lint
 
 commands:
   cmd_pwd:
@@ -59,4 +59,4 @@ executors:
   build_executor:
     working_directory: *workspace_root
     environment:
-      YARN_CACHE_FOLDER: *yarnpkg_cache_folder
+      YARN_CACHE_FOLDER: *yarnpkg_cache_dir
