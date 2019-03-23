@@ -16,3 +16,7 @@ clean:
 	rm -rf $(CURDIR)/node_modules
 	rm -rf $(CURDIR)/workspaces/backend-mock/node_modules
 	rm -rf $(CURDIR)/workspaces/client/node_modules
+
+lint:
+	$(MAKE) lint -C $(BACKEND_MOCK)
+	$(MAKE) lint -C $(CLIENT)
