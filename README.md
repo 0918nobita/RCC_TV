@@ -1,6 +1,6 @@
 # LTVOD
 
-[![CircleCI](https://circleci.com/gh/0918nobita/LTVOD.svg?style=svg)](https://circleci.com/gh/0918nobita/LTVOD) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F0918nobita%2FLTVOD.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2F0918nobita%2FLTVOD?ref=badge_shield)
+[![CircleCI](https://circleci.com/gh/0918nobita/LTVOD/tree/master.svg?style=svg&circle-token=c8b93630f04d2834afbcd86f5043345e4cfb6d90)](https://circleci.com/gh/0918nobita/LTVOD/tree/master) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F0918nobita%2FLTVOD.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2F0918nobita%2FLTVOD?ref=badge_shield)
 
 ## 開発環境構築
 
