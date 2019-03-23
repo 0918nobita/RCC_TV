@@ -61,7 +61,7 @@ executors:
     environment:
       YARN_CACHE_FOLDER: *yarnpkg_cache_dir
 
-workflow:
+workflows:
   version: 2
   lint:
     jobs:
