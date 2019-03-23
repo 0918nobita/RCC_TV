@@ -57,6 +57,8 @@ commands:
 
 executors:
   build_executor:
+    docker:
+      - image: node:11.11.0
     working_directory: *workspace_root
     environment:
       YARN_CACHE_FOLDER: *yarnpkg_cache_dir
