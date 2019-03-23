@@ -1,5 +1,5 @@
 import { take, call, put } from 'redux-saga/effects';
-import axios from 'axios';
+import axios, { AxiosAdapter } from 'axios';
 
 import { VODActionTypes, success, fail } from '@/store/vod/actions';
 
@@ -10,10 +10,11 @@ interface GetVideo {
   url: string;
 }
 
-const getVideo = async (videoId: string) => {
+const getVideo = async (videoId: string, adapter?: AxiosAdapter) => {
   try {
     const { data } = await axios.get<GetVideo>(
-      `http://localhost:8080/video/${videoId}`
+      `http://localhost:8080/video/${videoId}`,
+      { adapter }
     );
     return { result: data };
   } catch (e) {
