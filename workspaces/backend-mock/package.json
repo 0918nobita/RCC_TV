@@ -5,7 +5,8 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "start": "node ./dist/index.js",
-    "lint": "tslint --project ./ --fix"
+    "lint": "tslint --project ./ --fix",
+    "test": "tsc && ava"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
