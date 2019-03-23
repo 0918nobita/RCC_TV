@@ -10,11 +10,14 @@ export const start = (): Start => ({
   type: LiveActionTypes.Start,
 });
 
-type OnMessage = { type: LiveActionTypes.OnMessage; payload: { count: number } }
+type OnMessage = {
+  type: LiveActionTypes.OnMessage;
+  payload: { count: number };
+};
 
 export const onMessage = (count: number): OnMessage => ({
   type: LiveActionTypes.OnMessage,
-  payload: { count }
+  payload: { count },
 });
 
 type Fail = { type: LiveActionTypes.Fail; payload: { message: string } };

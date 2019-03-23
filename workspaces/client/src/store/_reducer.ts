@@ -4,5 +4,5 @@ import { reducer as liveReducer } from './live/reducer';
 
 export const reducer = combineReducers({
   vod: vodReducer,
-  live: liveReducer
+  live: liveReducer,
 });
