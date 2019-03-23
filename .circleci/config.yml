@@ -60,3 +60,9 @@ executors:
     working_directory: *workspace_root
     environment:
       YARN_CACHE_FOLDER: *yarnpkg_cache_dir
+
+workflow:
+  version: 2
+  lint:
+    jobs:
+      - lint
