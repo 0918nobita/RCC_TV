@@ -22,12 +22,13 @@ const getVideo = async (videoId: string, adapter?: AxiosAdapter) => {
   }
 };
 
-export function* getVideoMetadata(videoId: string) {
+export function* getVideoMetadata(videoId: string, adapter?: AxiosAdapter) {
   yield take(VODActionTypes.RequestVideo);
 
   const { result, err }: { result?: GetVideo; err?: any } = yield call(
     getVideo,
-    videoId
+    videoId,
+    adapter
   );
 
   if (result && !err) {
