@@ -7,7 +7,7 @@
     "build": "webpack --mode production",
     "storybook": "start-storybook",
     "lint": "tslint --project ./ --fix",
-    "test": "tsc && ava"
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.18.0",
