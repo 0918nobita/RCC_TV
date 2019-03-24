@@ -23,3 +23,4 @@ lint:
 
 test:
 	$(MAKE) test -C $(BACKEND_MOCK)
+	$(MAKE) test -C $(CLIENT)
