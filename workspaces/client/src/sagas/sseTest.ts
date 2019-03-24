@@ -2,7 +2,7 @@ import { eventChannel } from 'redux-saga';
 import { take, put } from 'redux-saga/effects';
 import { Observable } from 'rxjs';
 
-import { LiveActionTypes, onMessage, fail } from '@/store/live/actions';
+import { LiveActionTypes, onMessage } from '@/store/live/actions';
 
 export function* sseTest() {
   yield take(LiveActionTypes.Start);
