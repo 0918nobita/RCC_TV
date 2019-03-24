@@ -4,3 +4,6 @@ dev-server:
 
 lint:
 	yarn lint
+
+test:
+	yarn test
