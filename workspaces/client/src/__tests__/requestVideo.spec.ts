@@ -6,7 +6,7 @@ import { GlobalState } from '@/store/_state';
 import { requestVideo } from '@/store/vod/actions';
 import { getVideoMetadata } from '@/sagas/getVideoMetadata';
 
-test('getVideoMetadata', () => {
+test('getVideoMetadata', async () => {
   const sagaMiddleware = createSagaMiddleware();
   const mockStore = configureStore<GlobalState>([sagaMiddleware]);
   const store = mockStore();
@@ -26,8 +26,26 @@ test('getVideoMetadata', () => {
 
   store.dispatch(requestVideo());
 
-  setTimeout(() => {
-    const actions = store.getActions();
-    expect(actions[0]).toEqual({ type: 'vod/request!' });
-  }, 4);
+  const testAction = () =>
+    new Promise(resolve => {
+      store.subscribe(() => {
+        const actions = store.getActions();
+        if (actions.length >= 2) resolve(actions);
+      });
+    });
+
+  await expect(testAction()).resolves.toEqual([
+    { type: 'vod/request' },
+    {
+      type: 'vod/succeed in requesting',
+      payload: {
+        videoMetadata: {
+          id: 'Th1s1sV1De0iD',
+          url: 'http://localhost:3000/video.m3u8',
+          title: 'サンプルのビデオ',
+          desc: '説明文',
+        },
+      },
+    },
+  ]);
 });
