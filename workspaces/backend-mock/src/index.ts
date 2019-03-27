@@ -116,6 +116,7 @@ app.get('/account/:name', async (req, res) => {
     password: 'password',
     database: 'rcctv',
   });
+
   try {
     await connect(connection);
     const users = await query<UsersRecord>(
