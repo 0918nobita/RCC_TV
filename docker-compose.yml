@@ -6,7 +6,21 @@ services:
       - 8080:3000
     volumes:
       - "./workspaces/backend-mock/dist:/src"
+    links:
+      - db
     command: node /src/index.js
+  db:
+    build: "./workspaces/rds"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: rcctv
+      TZ: "Asia/Tokyo"
+    ports:
+      - 3306:3306
+    volumes:
+      - "./workspaces/rds/init:/docker-entrypoint-initdb.d"
   storage:
     image: nginx:1.14-alpine
     ports:

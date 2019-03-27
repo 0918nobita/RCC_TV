@@ -5,11 +5,22 @@ init:
 	yarn install
 	docker-compose build
 
+build-backend:
+	$(MAKE) build -C $(BACKEND_MOCK)
+
 docker-compose-up:
 	$(MAKE) dev-server -C $(CLIENT) & \
-	($(MAKE) build -C $(BACKEND_MOCK); docker-compose up)
+	($(MAKE) build-backend; docker-compose up)
 
 clean:
 	rm -rf $(CURDIR)/node_modules
 	rm -rf $(CURDIR)/workspaces/backend-mock/node_modules
 	rm -rf $(CURDIR)/workspaces/client/node_modules
+
+lint:
+	$(MAKE) lint -C $(BACKEND_MOCK)
+	$(MAKE) lint -C $(CLIENT)
+
+test:
+	$(MAKE) test -C $(BACKEND_MOCK)
+	$(MAKE) test -C $(CLIENT)

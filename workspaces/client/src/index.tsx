@@ -2,26 +2,27 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { createLogger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 
 import { reducer } from './store/_reducer';
-import PlayerComponent from './player';
-import CounterContainer from './containers/counterContainer';
-import { exampleSaga, getVideoMetadata } from '@/sagas/example';
+import LiveContainer from './containers/liveContainer';
+import VODContainer from './containers/vodContainer';
+import rootSaga from '@/sagas/root';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(reducer, applyMiddleware(sagaMiddleware));
+const store = createStore(
+  reducer,
+  applyMiddleware(sagaMiddleware, createLogger())
+);
 
-sagaMiddleware.run(exampleSaga);
-sagaMiddleware.run(getVideoMetadata, 'videoId');
-
-const MEDIA_STORAGE = 'http://localhost:3000';
+sagaMiddleware.run(rootSaga);
 
 render(
   <Provider store={store}>
-    <CounterContainer />
-    <PlayerComponent src={`${MEDIA_STORAGE}/video.m3u8`} />
+    <LiveContainer />
+    <VODContainer />
   </Provider>,
   document.getElementById('root')
 );

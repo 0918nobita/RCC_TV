@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import { reducer as counterReducer } from './counter/reducer';
+import { reducer as vodReducer } from './vod/reducer';
+import { reducer as liveReducer } from './live/reducer';
 
 export const reducer = combineReducers({
-  counter: counterReducer,
+  vod: vodReducer,
+  live: liveReducer,
 });

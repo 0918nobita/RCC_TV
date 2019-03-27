@@ -1,5 +1,7 @@
-import { CounterState } from './counter/state';
+import { VODState } from './vod/state';
+import { LiveState } from './live/state';
 
 export interface GlobalState {
-  counter: CounterState;
+  vod: VODState;
+  live: LiveState;
 }
