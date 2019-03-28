@@ -27,24 +27,24 @@ app.use((_, res, next) => {
   next();
 });
 
+app.get('/video/:videoId', videoHandler);
+
+app.get('/live', liveHandler);
+
+app.get('/account/:name', accountHandler);
+
 app.get('/', (_, res) => {
   return res.json({
     message: 'Hello, world!',
   });
 });
 
-app.get('/video/:videoId', videoHandler);
-
-app.get('/live', liveHandler);
-
-const recordToEntity = (
-  record: VideosRecord,
-  presenters: UsersRecord[]
-): VideoEntity => Object.assign({}, record, { presenters });
-
-app.get('/account/:name', accountHandler);
-
 app.get('/rdstest', async (_, res) => {
+  const recordToEntity = (
+    record: VideosRecord,
+    presenters: UsersRecord[]
+  ): VideoEntity => Object.assign({}, record, { presenters });
+
   const connection = MySQL.createConnection({
     host: 'db',
     user: 'user',
