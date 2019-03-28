@@ -2,6 +2,13 @@ import express, { Response } from 'express';
 import bodyParser from 'body-parser';
 import MySQL from 'mysql';
 
+import {
+  UsersRecord,
+  VideosRecord,
+  PresentationsRecord,
+} from './models/records';
+import { VideoEntity } from './models/entities';
+
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -52,32 +59,6 @@ app.get('/live', (req, res) => {
 
   req.on('close', () => clearInterval(intervalId));
 });
-
-interface UsersRecord {
-  id: number;
-  name: string;
-  screen_name: string;
-  description: string;
-  email: string;
-  icon: string;
-}
-
-interface VideosRecord {
-  id: number;
-  title: string;
-  description: string;
-  url: string;
-  thumbnail: string;
-}
-
-interface VideoEntity extends VideosRecord {
-  presenters: UsersRecord[];
-}
-
-interface PresentationsRecord {
-  user_id: number;
-  video_id: number;
-}
 
 const connect = (connection: MySQL.Connection) =>
   new Promise((resolve: () => void, reject) => {
