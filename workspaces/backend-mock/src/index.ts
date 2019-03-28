@@ -12,6 +12,7 @@ import { connect, query } from './utils/sql';
 import { handler as videoHandler } from './video/handler';
 import { handler as liveHandler } from './live/handler';
 import { handler as accountHandler } from './account/handler';
+import { dbConfig } from './config';
 
 const app = express();
 
@@ -45,12 +46,7 @@ app.get('/rdstest', async (_, res) => {
     presenters: UsersRecord[]
   ): VideoEntity => Object.assign({}, record, { presenters });
 
-  const connection = MySQL.createConnection({
-    host: 'db',
-    user: 'user',
-    password: 'password',
-    database: 'rcctv',
-  });
+  const connection = MySQL.createConnection(dbConfig);
 
   try {
     await connect(connection);

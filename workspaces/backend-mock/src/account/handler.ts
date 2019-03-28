@@ -3,16 +3,12 @@ import MySQL from 'mysql';
 
 import { connect, query } from '../utils/sql';
 import { UsersRecord } from '../models/records';
+import { dbConfig } from '../config';
 
 export const handler = async (req: Request, res: Response) => {
   const name = req.params.name;
 
-  const connection = MySQL.createConnection({
-    host: 'db',
-    user: 'user',
-    password: 'password',
-    database: 'rcctv',
-  });
+  const connection = MySQL.createConnection(dbConfig);
 
   try {
     await connect(connection);
