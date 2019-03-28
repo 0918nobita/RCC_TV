@@ -1,4 +1,4 @@
-import express, { Response } from 'express';
+import express from 'express';
 import bodyParser from 'body-parser';
 import MySQL from 'mysql';
 
@@ -8,6 +8,10 @@ import {
   PresentationsRecord,
 } from './models/records';
 import { VideoEntity } from './models/entities';
+import { connect, query } from './utils/sql';
+import { handler as videoHandler } from './video/handler';
+import { handler as liveHandler } from './live/handler';
+import { handler as accountHandler } from './account/handler';
 
 const app = express();
 
@@ -29,90 +33,16 @@ app.get('/', (_, res) => {
   });
 });
 
-app.get('/video/:videoId', (_, res) => {
-  return res.json({
-    id: 'Th1s1sV1De0iD',
-    url: 'http://localhost:3000/video.m3u8',
-    title: 'サンプルのビデオ',
-    desc: '説明文',
-  });
-});
+app.get('/video/:videoId', videoHandler);
 
-const send = (res: Response, count: number) => {
-  res.write('id: ThisIsEventId\n');
-  res.write(`data: ${count}\n\n`);
-};
-
-app.get('/live', (req, res) => {
-  res.writeHead(200, {
-    'Content-Type': 'text/event-stream',
-    'Cache-Control': 'no-cache',
-    Connection: 'keep-alive',
-  });
-  res.write('\n');
-
-  let count = 0;
-  const intervalId = setInterval(() => {
-    count++;
-    send(res, count);
-  }, 1000);
-
-  req.on('close', () => clearInterval(intervalId));
-});
-
-const connect = (connection: MySQL.Connection) =>
-  new Promise((resolve: () => void, reject) => {
-    connection.connect(err => {
-      if (err) {
-        reject(err);
-        return;
-      }
-      resolve();
-    });
-  });
-
-function query<T>(connection: MySQL.Connection, queryString: string) {
-  return new Promise((resolve: (rows: T[]) => void, reject) => {
-    connection.query(queryString, (err, rows) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-      resolve(rows);
-    });
-  });
-}
+app.get('/live', liveHandler);
 
 const recordToEntity = (
   record: VideosRecord,
   presenters: UsersRecord[]
 ): VideoEntity => Object.assign({}, record, { presenters });
 
-app.get('/account/:name', async (req, res) => {
-  const name = req.params.name;
-
-  const connection = MySQL.createConnection({
-    host: 'db',
-    user: 'user',
-    password: 'password',
-    database: 'rcctv',
-  });
-
-  try {
-    await connect(connection);
-    const users = await query<UsersRecord>(
-      connection,
-      `SELECT * FROM users WHERE name='${name}'`
-    );
-    res.json(users[0]);
-  } catch (e) {
-    console.log(e);
-    res.writeHead(500);
-    res.end();
-  } finally {
-    connection.end();
-  }
-});
+app.get('/account/:name', accountHandler);
 
 app.get('/rdstest', async (_, res) => {
   const connection = MySQL.createConnection({
