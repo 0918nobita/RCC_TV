@@ -6,10 +6,6 @@ module.exports = {
   output: {
     filename: 'bundle.js',
   },
-  devServer: {
-    contentBase: './',
-    port: 1234,
-  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src')
