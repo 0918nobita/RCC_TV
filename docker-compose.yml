@@ -12,7 +12,7 @@ services:
     ports:
       - 8080:3000
     volumes:
-      - "./workspaces/backend-mock/dist:/src"
+      - "./workspaces/backend/dist:/src"
     links:
       - db
     command: node /src/index.js
