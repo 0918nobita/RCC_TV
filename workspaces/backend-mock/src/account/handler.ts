@@ -14,7 +14,8 @@ export const handler = async (req: Request, res: Response) => {
     await connect(connection);
     const users = await query<UsersRecord>(
       connection,
-      `SELECT * FROM users WHERE name='${name}'`
+      `SELECT * FROM users WHERE name=?`,
+      [name]
     );
     res.json(users[0]);
   } catch (e) {
