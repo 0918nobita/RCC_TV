@@ -1,4 +1,4 @@
-BACKEND_MOCK := $(CURDIR)/workspaces/backend-mock
+BACKEND := $(CURDIR)/workspaces/backend
 CLIENT := $(CURDIR)/workspaces/client
 
 init:
@@ -13,20 +13,20 @@ build-client:
 	$(MAKE) build -C $(CLIENT)
 
 build-backend:
-	$(MAKE) build -C $(BACKEND_MOCK)
+	$(MAKE) build -C $(BACKEND)
 
 docker-compose-up:
 	docker-compose up
 
 clean:
 	rm -rf $(CURDIR)/node_modules
-	rm -rf $(CURDIR)/workspaces/backend-mock/node_modules
-	rm -rf $(CURDIR)/workspaces/client/node_modules
+	rm -rf $(BACKEND)/node_modules
+	rm -rf $(CLIENT)/node_modules
 
 lint:
-	$(MAKE) lint -C $(BACKEND_MOCK)
+	$(MAKE) lint -C $(BACKEND)
 	$(MAKE) lint -C $(CLIENT)
 
 test:
-	$(MAKE) test -C $(BACKEND_MOCK)
+	$(MAKE) test -C $(BACKEND)
 	$(MAKE) test -C $(CLIENT)
