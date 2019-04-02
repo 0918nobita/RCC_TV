@@ -32,13 +32,19 @@
     "webpack-cli": "^3.2.3",
     "webpack-node-externals": "^1.7.2"
   },
-  "ava": {
-    "compileEnhancements": false,
-    "extensions": [
-      "ts"
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx?|jsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx"
     ],
-    "require": [
-      "ts-node/register"
-    ]
+    "moduleNameMapper": {
+      "^@/(.*)": "<rootDir>/src/$1"
+    }
   }
 }
