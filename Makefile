@@ -5,6 +5,13 @@ init:
 	yarn install
 	docker-compose build
 
+build:
+	$(MAKE) build-client
+	$(MAKE) build-backend
+
+build-client:
+	$(MAKE) build -C $(CLIENT)
+
 build-backend:
 	$(MAKE) build -C $(BACKEND_MOCK)
 

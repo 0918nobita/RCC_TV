@@ -1,6 +1,5 @@
-dev-server:
+build:
 	yarn build
-	yarn start
 
 lint:
 	yarn lint
