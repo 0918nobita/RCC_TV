@@ -11,9 +11,13 @@ export const connect = (connection: MySQL.Connection) =>
     });
   });
 
-export function query<T>(connection: MySQL.Connection, queryString: string) {
+export function query<T>(
+  connection: MySQL.Connection,
+  queryString: string,
+  params: (string | string[])[] = []
+) {
   return new Promise((resolve: (rows: T[]) => void, reject) => {
-    connection.query(queryString, (err, rows) => {
+    connection.query(queryString, params, (err, rows) => {
       if (err) {
         reject(err);
         return;
