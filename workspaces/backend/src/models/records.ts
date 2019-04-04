@@ -5,6 +5,8 @@ export interface UsersRecord {
   description: string;
   email: string;
   icon: string;
+  created: Date;
+  modified: Date;
 }
 
 export interface VideosRecord {
