@@ -3,7 +3,9 @@ CREATE TABLE rcctv.videos (
   title varchar(50) NOT NULL,
   description TEXT,
   url TEXT,
-  thumbnail TEXT
+  thumbnail TEXT,
+  created TIMESTAMP NOT NULL,
+  modified TIMESTAMP NOT NULL
 );
 
 INSERT INTO rcctv.videos (title, description, url) VALUES
