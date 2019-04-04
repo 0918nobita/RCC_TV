@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import MySQL from 'mysql';
+import moment from 'moment';
 
 import { connect, query } from '../utils/sql';
 import { UsersRecord } from '../models/records';
@@ -25,7 +26,13 @@ export const handler = async (req: Request, res: Response) => {
       res.end();
       return;
     }
-    res.json(users[0]);
+    const account = users[0];
+    res.json(
+      Object.assign(account, {
+        created: moment(account.created).format('YYYY年M月D日 H:m'),
+        modified: moment(account.modified).format('YYYY年M月D日 H:m'),
+      })
+    );
   } catch (e) {
     console.log(e);
     res.writeHead(500);
