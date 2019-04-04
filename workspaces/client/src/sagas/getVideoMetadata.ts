@@ -6,7 +6,7 @@ import { VODActionTypes, success, fail } from '@/store/vod/actions';
 interface GetVideo {
   id: string;
   title: string;
-  desc: string;
+  description: string;
   url: string;
 }
 

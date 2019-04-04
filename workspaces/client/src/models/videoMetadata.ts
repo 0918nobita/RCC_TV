@@ -1,6 +1,6 @@
 export interface VideoMetadata {
   id: string;
   title: string;
-  desc: string;
+  description: string;
   url: string;
 }

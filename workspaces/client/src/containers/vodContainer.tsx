@@ -30,7 +30,7 @@ class VODContainer extends React.Component<Props> {
               <br />
               title: {this.props.state.video.title}
               <br />
-              desc: {this.props.state.video.desc}
+              desc: {this.props.state.video.description}
             </p>
             <PlayerComponent src={this.props.state.video.url} />
           </div>
