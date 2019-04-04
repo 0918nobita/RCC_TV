@@ -4,8 +4,8 @@ CREATE TABLE rcctv.videos (
   description TEXT,
   url TEXT,
   thumbnail TEXT,
-  created TIMESTAMP NOT NULL,
-  modified TIMESTAMP NOT NULL
+  created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  modified DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 INSERT INTO rcctv.videos (title, description, url) VALUES
