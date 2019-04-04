@@ -6,7 +6,7 @@ import { UsersRecord } from '../models/records';
 import { dbConfig } from '../config';
 
 export const handler = async (req: Request, res: Response) => {
-  const name = req.params.name;
+  const name: string = req.params.name;
 
   const connection = MySQL.createConnection(dbConfig);
 
