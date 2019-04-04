@@ -44,6 +44,16 @@ jobs:
       - *cmd_install_yarn_pkg
       - *cmd_install_npm_dependencies
       - run: make lint
+  test:
+    executor: build_executor
+    steps:
+      - checkout
+      - *cmd_attach_workspace
+      - cmd_pwd
+      - cmd_ls
+      - *cmd_install_yarn_pkg
+      - *cmd_install_npm_dependencies
+      - run: make test
 
 commands:
   cmd_pwd:
@@ -65,6 +75,9 @@ executors:
 
 workflows:
   version: 2
-  lint:
+  main:
     jobs:
       - lint
+      - test:
+        requires:
+          - lint
