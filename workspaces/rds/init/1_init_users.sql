@@ -4,7 +4,9 @@ CREATE TABLE rcctv.users (
   screen_name varchar(50) NOT NULL UNIQUE,
   description varchar(160),
   email varchar(256) NOT NULL UNIQUE,
-  icon TEXT
+  icon TEXT,
+  created TIMESTAMP NOT NULL,
+  modified TIMESTAMP NOT NULL
 );
 
 INSERT INTO rcctv.users (name, screen_name, description, email, icon) VALUES
