@@ -3,4 +3,5 @@ export const dbConfig = {
   user: 'user',
   password: 'password',
   database: 'rcctv',
+  timezone: 'jst',
 };
