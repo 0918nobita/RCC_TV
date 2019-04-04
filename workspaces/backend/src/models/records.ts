@@ -15,6 +15,8 @@ export interface VideosRecord {
   description: string;
   url: string;
   thumbnail: string;
+  created: Date;
+  modified: Date;
 }
 
 export interface PresentationsRecord {
