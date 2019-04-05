@@ -21,7 +21,8 @@
     "redux-logger": "^3.0.6",
     "redux-mock-store": "^1.5.3",
     "redux-saga": "^1.0.2",
-    "rxjs": "^6.4.0"
+    "rxjs": "^6.4.0",
+    "typeless": "^0.0.18"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
