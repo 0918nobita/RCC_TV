@@ -22,7 +22,7 @@ export const handler = async (req: Request, res: Response) => {
       console.log(
         `Video ID '${videoId}' に対する動画リソースが見つかりませんでした`
       );
-      res.writeHead(400);
+      res.writeHead(404);
       res.end();
       return;
     }
