@@ -1,7 +1,7 @@
 import MySQL from 'mysql';
 
 export const connect = (connection: MySQL.Connection) =>
-  new Promise((resolve: () => void, reject) => {
+  new Promise<void>((resolve: () => void, reject) => {
     connection.connect(err => {
       if (err) {
         reject(err);
