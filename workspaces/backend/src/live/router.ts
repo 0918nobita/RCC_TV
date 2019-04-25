@@ -1,11 +1,15 @@
-import { Request, Response } from 'express';
+import { Router, Request, Response } from 'express';
+
+export const router = Router();
+
+// endpoint prefix: /live
 
 const send = (res: Response, count: number) => {
   res.write('id: ThisIsEventId\n');
   res.write(`data: ${count}\n\n`);
 };
 
-export const handler = (req: Request, res: Response) => {
+router.get('', (req: Request, res: Response) => {
   res.writeHead(200, {
     'Content-Type': 'text/event-stream',
     'Cache-Control': 'no-cache',
@@ -20,4 +24,4 @@ export const handler = (req: Request, res: Response) => {
   }, 1000);
 
   req.on('close', () => clearInterval(intervalId));
-};
+});

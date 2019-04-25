@@ -1,12 +1,16 @@
-import { Request, Response } from 'express';
+import { Router, Request, Response } from 'express';
 import MySQL from 'mysql';
 import moment from 'moment';
 
-import { connect, query } from '../utils/sql';
 import { UsersRecord } from '../models/records';
+import { connect, query } from '../utils/sql';
 import { dbConfig } from '../config';
 
-export const handler = async (req: Request, res: Response) => {
+export const router = Router();
+
+// endpoint prefix: /account
+
+router.get('/:name', async (req: Request, res: Response) => {
   const name: string = req.params.name;
 
   const connection = MySQL.createConnection(dbConfig);
@@ -40,4 +44,4 @@ export const handler = async (req: Request, res: Response) => {
   } finally {
     connection.end();
   }
-};
+});

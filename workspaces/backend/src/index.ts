@@ -9,9 +9,9 @@ import {
 } from './models/records';
 import { VideoEntity } from './models/entities';
 import { connect, query } from './utils/sql';
-import { handler as videoHandler } from './video/handler';
-import { handler as liveHandler } from './live/handler';
-import { handler as accountHandler } from './account/handler';
+import { router as videoRouter } from './video/router';
+import { router as liveRouter } from './live/router';
+import { router as accountRouter } from './account/router';
 import { dbConfig } from './config';
 
 const app = express();
@@ -28,11 +28,9 @@ app.use((_, res, next) => {
   next();
 });
 
-app.get('/video/:videoId', videoHandler);
-
-app.get('/live', liveHandler);
-
-app.get('/account/:name', accountHandler);
+app.use('/account', accountRouter);
+app.use('/video', videoRouter);
+app.use('/live', liveRouter);
 
 app.get('/', (_, res) => {
   return res.json({
