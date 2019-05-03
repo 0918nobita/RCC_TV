@@ -25,7 +25,7 @@ export const connect = (connection: MySQL.Connection) =>
 export function query<T>(
   connection: MySQL.Connection,
   queryString: string,
-  params: (string | string[])[] = []
+  params: (Params<T> | Params<T>[])[] = []
 ) {
   return new Promise((resolve: (rows: T[]) => void, reject) => {
     connection.query(queryString, params, (err, rows) => {
