@@ -74,3 +74,59 @@ router.get('/:videoId', async (req: Request, res: Response) => {
     connection.end();
   }
 });
+
+router.get('/', async (req: Request, res: Response) => {
+  const {
+    query: searchQuery,
+    offset,
+    records,
+  }: { [K in 'query' | 'offset' | 'records']: string } = req.query;
+
+  const connection = MySQL.createConnection(dbConfig);
+
+  try {
+    await connect(connection);
+    const videos = await query<VideosRecord>(
+      connection,
+      `
+      SELECT DISTINCT videos.id,
+        videos.title,
+        videos.description,
+        videos.url,
+        videos.thumbnail,
+        videos.created,
+        videos.modified
+      FROM videos
+        INNER JOIN presentations
+          ON videos.id = presentations.video_id
+        INNER JOIN users
+          ON presentations.user_id = users.id
+      WHERE videos.title LIKE ?
+        OR videos.description LIKE ?
+        OR users.NAME LIKE ?
+        OR users.screen_name LIKE ?
+      LIMIT ?
+      OFFSET ?
+      `,
+      [
+        ...Array(4).fill(`%${searchQuery}%`),
+        Number.parseInt(records, 10),
+        Number.parseInt(offset, 10),
+      ]
+    );
+    res.json(
+      videos.map(video =>
+        Object.assign(video, {
+          created: moment(video.created).format('YYYY年M月D日 H:m'),
+          modified: moment(video.modified).format('YYYY年M月D日 H:m'),
+        })
+      )
+    );
+  } catch (e) {
+    console.log(e);
+    res.writeHead(500);
+    res.end();
+  } finally {
+    connection.end();
+  }
+});
