@@ -1779,10 +1779,10 @@
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.2.tgz#0e670ea254d559241b6eeb3894f8754991e73220"
   integrity sha512-ui3WwXmjTaY73fOQ3/m3nnajU/Orhi6cEu5rzX+BrAAJxa3eITXZ5ch9suPqtM03OWhAHhPSyBGCN4UKoxO20Q==
 
-"@types/hls.js@0.12.3":
-  version "0.12.3"
-  resolved "https://registry.yarnpkg.com/@types/hls.js/-/hls.js-0.12.3.tgz#09d5d1dbcd78d7dd46deff6db02bd2af9721a4cf"
-  integrity sha512-1QbxVTp7v9bn8MjvbMXV4YbMntC9Dv8v9bI9LgWxfg9Mgib0/jI2XITUEKGgG5Cde48ktyA1UHTSWld7QKKNnQ==
+"@types/hls.js@0.12.4":
+  version "0.12.4"
+  resolved "https://registry.yarnpkg.com/@types/hls.js/-/hls.js-0.12.4.tgz#6f78acfe2ad6a71ca5df277984a7d2d2a1580a93"
+  integrity sha512-gfJaIliVNwjAGYGPQp1qLjgi5FSCYADU71ovh4EqauSVuJgvStmYoF4yeL3i8d9bizUKudxDe9hbKMpwfTGGcg==
 
 "@types/hoist-non-react-statics@^3.3.0":
   version "3.3.0"
