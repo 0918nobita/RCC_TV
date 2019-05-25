@@ -8891,10 +8891,10 @@ optimist@^0.6.1:
     minimist "~0.0.1"
     wordwrap "~0.0.2"
 
-option-t@19.2.1:
-  version "19.2.1"
-  resolved "https://registry.yarnpkg.com/option-t/-/option-t-19.2.1.tgz#fae668876d04d6c96d4237f389fbf2afb2138529"
-  integrity sha512-uvXds9kFsm2UfSg13+FncFJKeRhQI4tftJ/ZgaQbeoxVIYbo1V5LnG7x6q/vjqRLo2YSUFdnjJUayqO2Sad+zw==
+option-t@19.3.0:
+  version "19.3.0"
+  resolved "https://registry.yarnpkg.com/option-t/-/option-t-19.3.0.tgz#07d9cb0e27cc316af1bafccf3a3ee4297efc7ecc"
+  integrity sha512-lSbeZNPTfsam1NiA4HHJZr0GD/FR6QDEJxgTqViulI/38JHtYOO35LZmKejJKTAyTsdFh/2wPLuEaBvhs85KRQ==
 
 optionator@^0.8.1:
   version "0.8.2"
