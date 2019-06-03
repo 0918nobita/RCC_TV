@@ -8113,10 +8113,10 @@ optimist@^0.6.1:
     minimist "~0.0.1"
     wordwrap "~0.0.2"
 
-option-t@19.3.0:
-  version "19.3.0"
-  resolved "https://registry.yarnpkg.com/option-t/-/option-t-19.3.0.tgz#07d9cb0e27cc316af1bafccf3a3ee4297efc7ecc"
-  integrity sha512-lSbeZNPTfsam1NiA4HHJZr0GD/FR6QDEJxgTqViulI/38JHtYOO35LZmKejJKTAyTsdFh/2wPLuEaBvhs85KRQ==
+option-t@20.0.5:
+  version "20.0.5"
+  resolved "https://registry.yarnpkg.com/option-t/-/option-t-20.0.5.tgz#5ba809577a1205f61f6d36ee02a1893e712d2f1e"
+  integrity sha512-dGcZxyr0czuzdhlG3ifoIfwxq1rLoYKp70gj7jzGKENUWcw+5+DmDLBddek7tkjk3PW0Zxob5fT5UoHL+aVOxw==
 
 optionator@^0.8.1:
   version "0.8.2"
