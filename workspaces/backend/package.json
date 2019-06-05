@@ -20,7 +20,7 @@
   "devDependencies": {
     "@babel/core": "7.4.5",
     "@babel/preset-env": "7.4.5",
-    "@types/express": "4.16.1",
+    "@types/express": "4.17.0",
     "@types/mysql": "2.15.6",
     "@types/node": "11.13.13",
     "babel-jest": "24.8.0",
