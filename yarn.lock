@@ -8046,10 +8046,10 @@ optimist@^0.6.1:
     minimist "~0.0.1"
     wordwrap "~0.0.2"
 
-option-t@20.0.5:
-  version "20.0.5"
-  resolved "https://registry.yarnpkg.com/option-t/-/option-t-20.0.5.tgz#5ba809577a1205f61f6d36ee02a1893e712d2f1e"
-  integrity sha512-dGcZxyr0czuzdhlG3ifoIfwxq1rLoYKp70gj7jzGKENUWcw+5+DmDLBddek7tkjk3PW0Zxob5fT5UoHL+aVOxw==
+option-t@20.1.0:
+  version "20.1.0"
+  resolved "https://registry.yarnpkg.com/option-t/-/option-t-20.1.0.tgz#52a326856ef5250593d1e6a55f42c0454472581e"
+  integrity sha512-GtOOYF9ZXpHCMyOUXOMmvTdFLyINe1zAHSpYaYwn7pjYCO9CqfoJhIJxGgNQhMZXZ6wYP4gGjE1j41jdUFXxqg==
 
 optionator@^0.8.1:
   version "0.8.2"
