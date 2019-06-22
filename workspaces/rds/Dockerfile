@@ -1,4 +1,4 @@
-FROM mariadb:10.4.5
+FROM mariadb:10.4.6
 
 RUN apt-get update
 
