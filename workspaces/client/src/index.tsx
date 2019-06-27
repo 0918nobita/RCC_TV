@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render } from 'react-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { createLogger } from 'redux-logger';
@@ -19,10 +20,27 @@ const store = createStore(
 
 sagaMiddleware.run(rootSaga);
 
-render(
-  <Provider store={store}>
+const TopPage = () => (
+  <div>
     <LiveContainer />
     <VODContainer />
-  </Provider>,
+  </div>
+);
+
+const LoginPage = () => (
+  <div>
+    <p>ログイン</p>
+  </div>
+);
+
+render(
+  <BrowserRouter>
+    <Provider store={store}>
+      <Switch>
+        <Route exact path="/" component={TopPage} />
+        <Route exact path="/login" component={LoginPage} />
+      </Switch>
+    </Provider>
+  </BrowserRouter>,
   document.getElementById('root')
 );
