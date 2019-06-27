@@ -1,6 +1,6 @@
 # RCC TV
 
-[![CircleCI](https://circleci.com/gh/0918nobita/RCC_TV.svg?style=svg)](https://circleci.com/gh/0918nobita/RCC_TV) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F0918nobita%2FLTVOD.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2F0918nobita%2FLTVOD?ref=badge_shield)
+[![CircleCI](https://circleci.com/gh/0918nobita/RCC_TV.svg?style=svg)](https://circleci.com/gh/0918nobita/RCC_TV)
 
 ## 開発環境構築
 
