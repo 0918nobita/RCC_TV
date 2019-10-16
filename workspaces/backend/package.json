@@ -17,8 +17,8 @@
     "rxjs": "6.5.3"
   },
   "devDependencies": {
-    "@babel/core": "7.6.2",
-    "@babel/preset-env": "7.6.2",
+    "@babel/core": "7.6.4",
+    "@babel/preset-env": "7.6.3",
     "@types/express": "4.17.1",
     "@types/mysql": "2.15.7",
     "@types/node": "11.13.21",
